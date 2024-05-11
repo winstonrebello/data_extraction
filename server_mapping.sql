@@ -26,7 +26,7 @@ CREATE USER MAPPING FOR postgres
                    FROM dim.encrypted_connections 
                    WHERE id = 2
                 ), password (
-                   SELECT password 
+                   SELECT pgp_sym_decrypt(password, 'your_secret_key') 
                    FROM dim.encrypted_connections 
                    WHERE id = 2
                 )
